@@ -42,7 +42,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "2.14.3",
 	"appid": "wx9a28afa43431cf1c",
-	"projectname": "waimai",
+	"projectname": "coupon-waimai",
 	"cloudfunctionTemplateRoot": "",
 	"watchOptions": {
 		"ignore": []
