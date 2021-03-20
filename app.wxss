@@ -1,0 +1,10 @@
+@import "colorui/main.wxss";
+@import "colorui/icon.wxss";
+
+page {
+  --primary: var(--orange)
+}
+
+.navigation-title {
+  font-weight: 900;
+}
