@@ -1,7 +1,7 @@
 # 美团饿了么外卖优惠券小程序
 
 #### 效果预览:
-![外卖好券天天领](https://github.com/ericz9/coupon-waimai/raw/master/assets/images/qrcode-simple.jpg)
+![外卖好券天天领](https://github.com/ericz9/coupon-waimai/raw/master/assets/images/qrcode-simple-small.jpg)
 
 # 开始使用
 导入到微信开发者工具即可
@@ -41,7 +41,7 @@
 # 多级分销版本，全额返佣！无需开发，10分钟上线！
 
 #### 效果预览:
-![外卖小多](https://github.com/ericz9/coupon-waimai/raw/master/assets/images/qrcode-saas.jpg)
+![外卖小多](https://github.com/ericz9/coupon-waimai/raw/master/assets/images/qrcode-saas-small.jpg)
 
 #### 联系我开通:
 微信（qian_z）
