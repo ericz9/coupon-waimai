@@ -1,7 +1,7 @@
 # 美团饿了么外卖优惠券小程序
 
 #### 效果预览:
-![外卖好券天天领](https://github.com/ericz9/coupon-waimai/raw/master/assets/images/qrcode-simple-small.jpg)
+![外卖好券天天领](https://file.duomai88.com/images/public/assets/github-coupon-waimai-qrcode-simple-small.jpg)
 
 # 开始使用
 导入到微信开发者工具即可
@@ -15,7 +15,7 @@
 [查看注册教程](http://mp.weixin.qq.com/s?__biz=MzIyOTEwNTkwMQ==&mid=100000638&idx=1&sn=d80803a5415b960e559e67f4e4bcb2de&chksm=68468afc5f3103ead9bcfb5060d554bf55d69e2b5a0980bf4eb8263e2ff3b01b8bc0fd15fc77#rd)
 
 ## 如何获取<饿了么天天领大红包>活动的链接
-![饿了么天天领红包](https://github.com/ericz9/coupon-waimai/raw/master/assets/images/ele.jpg)
+![饿了么天天领红包](https://file.duomai88.com/images/public/assets/github-coupon-waimai-ele.jpg)
 
 将复制的链接，替换index.js文件中，id为2的coupons对象的url值
 ```
@@ -41,7 +41,9 @@
 # 多级分销版本，全额返佣！无需开发，10分钟上线！
 
 #### 效果预览:
-![外卖小多](https://github.com/ericz9/coupon-waimai/raw/master/assets/images/qrcode-saas-small.jpg)
+![外卖小多](https://file.duomai88.com/images/public/assets/github-coupon-waimai-qrcode-saas-small.jpg)
 
 #### 联系我开通:
 微信（qian_z）
+
+请填写备注<外卖系统>哦
