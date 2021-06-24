@@ -1,0 +1,62 @@
+.addtips {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  background-color: rgba(0,0,0,.6);
+  z-index: 9999;
+  color: #fff;
+  border-radius: 5px;
+  width: 260px;
+}
+
+.addtips .arrow {
+  position: relative;
+}
+
+.addtips .arrow:after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: 0;
+  right: 50px;
+  width: 0;
+  height: 0;
+  border: 5px solid;
+  border-color: transparent transparent rgba(0,0,0,.6) transparent ;
+}
+
+.addtips .content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+.addtips .content .divider {
+  padding: 0 2px;
+}
+
+.screen-swiper {
+  min-height: 300rpx;
+}
+
+.share {
+  position: fixed;
+  bottom: calc(40rpx + 48px);
+  right: 30rpx;
+  border: 50%;
+}
+
+.share .cu-btn:not([class*="bg-"]) {
+  background-color: #fff;
+  opacity: .9;
+  box-shadow: 0px 2px 4px 0px rgba(0,28,88,0.14);
+}
+
+.share .cu-btn .cuIcon-weixin {
+  font-size: 60rpx;
+}
+
+.cu-modal .cuIcon-close {
+  color: var(--primary);
+}

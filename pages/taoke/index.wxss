@@ -1,0 +1,59 @@
+.cu-custom .cu-bar .content {
+  width: 100%;
+}
+
+.header {
+  color: #fff;
+  height: 115px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.header .nav {
+  width: calc(100vw - 40rpx);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+
+.header .nav .cu-item {
+  height: 70rpx;
+  line-height: 70rpx;
+}
+
+.banner .placeholder {
+  z-index: 99;
+  height: 165px;
+  border-bottom-left-radius: 90% 15%;
+  border-bottom-right-radius: 90% 15%;
+}
+
+.banner .screen-swiper {
+  min-height: 300rpx;
+  padding: 30rpx;
+  margin-top: -65px;
+}
+
+.banner .screen-swiper image {
+  border-radius: 30rpx;
+}
+
+.goods-nav {
+  border-radius: 10rpx;
+  margin: 0 30rpx;
+}
+
+.goods-nav.cu-list.grid.no-border {
+  padding-bottom: 0;
+}
+
+.goods-nav image {
+  width: 50px;
+  height: 50px;
+}
+
+.goods-category {
+  padding-top: 115px;
+}

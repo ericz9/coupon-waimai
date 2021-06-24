@@ -1,0 +1,41 @@
+<import src="/templates/failed.wxml" />
+<import src="/templates/loadMore.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:else>
+  <view class="nav bg-white flex justify-center margin-top-xs">
+    <view class="cu-item {{level === '1' ? 'text-primary cur' : ''}}" id="1" bindtap="handleTabClick">直推好友</view>
+    <view class="cu-item {{level === '2' ? 'text-primary cur' : ''}}" id="2" bindtap="handleTabClick">间推好友</view>
+  </view>
+  <block wx:if="{{friends.length > 0}}">
+    <view class="cu-list menu-avatar margin-top-xs">
+      <view
+        wx:for="{{friends}}"
+        wx:key="index"
+        class="cu-item">
+        <view class="cu-avatar radius lg" style="background-image:url({{item.headImg}});"></view>
+        <view class="content">
+          <view class="flex">
+            <view class="text-grey margin-right-xs">{{item.nickName}}</view>
+          </view>
+          <view class="text-gray text-sm flex">
+            <text class="text-cut">{{item.createTime}}</text>
+          </view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs"></view>
+          <view wx:if="{{item.sex === 1}}" class="cu-tag round bg-blue sm">男</view>
+          <view wx:elif="{{item.sex === 2}}" class="cu-tag round bg-pink sm">女</view>
+          <view wx:else class="cu-tag round bg-grey sm">未知</view>
+        </view>
+      </view>
+    </view>
+    <template is="loadMore" data="{{...{pager: pager} }}"/>
+  </block>
+  <view wx:else class="failed">
+    <view class="op">
+      <view class="tips">{{level === '1' ? '您还没有直推好友哦~' : '您还没有间推好友哦~'}}</view>
+    </view>
+  </view>
+</block>

@@ -1,0 +1,15 @@
+<view wx:if="{{loading === 'success'}}" class="container">
+  <view class="text-xl text-red text-bold margin-bottom-xs">2秒绑定，</view>
+  <view class="text-xl text-red text-bold margin-bottom-xl">下单即刻享受返现！</view>
+  <view class="text-grey text-bold margin-bottom-xs">第一步：</view>
+  <view class="text-green text-bold">复制以下口令，然后打开【Táo宝】APP</view>
+  <view class="text-grey text-sm margin-top-xs margin-bottom-xs">轻触口令区域即可复制</view>
+  <view class="tkl" data-tkl="{{tkl.passwordSimple}}" bindtap="onCopyTkl">{{tkl.passwordSimple}}</view>
+  <view class="text-grey">IOS14需使用以下口令</view>
+  <view class="tkl" data-tkl="{{tkl.model}}" bindtap="onCopyTkl">{{tkl.model}}</view>
+  <view class="text-grey text-bold margin-top-xl margin-bottom-xs">第二步：</view>
+  <view class="text-green text-bold margin-bottom">在【Táo宝】APP中完成备案后，再点击下方按钮</view>
+  <button class="cu-btn block round lg bg-primary" bindtap="onSubmit">
+    <text class="text-white">绑定完成</text>
+  </button>
+</view>

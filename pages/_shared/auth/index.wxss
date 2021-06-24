@@ -1,0 +1,36 @@
+.main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.main .logo {
+  margin: 200rpx 0;
+}
+
+.main .logo image {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+}
+
+.main .auth {
+  width: 90%;
+}
+
+.main .auth .op {
+  width: 100%;
+}
+
+.main .auth .tips {
+  font-size: 28rpx;
+  color: #7d7e80;
+  margin-bottom: 20rpx;
+  text-align: center;
+}
+
+.main .auth .upgrade {
+  font-size: 32rpx;
+  color: #ff976a;
+}

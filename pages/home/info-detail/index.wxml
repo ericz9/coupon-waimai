@@ -1,0 +1,40 @@
+<import src="/templates/failed.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<view class="container" wx:else>
+  <view class="text-red text-xl text-bold margin-bottom-sm">{{coupon.title}}</view>
+  <view class="margin-bottom-sm">发布时间：{{coupon.createTime}}</view>
+  <view class="text-grey margin-bottom">{{coupon.subTitle}}</view>
+  <view class="cu-tag bg-orange radius response margin-bottom padding-tb-lg padding-lr-sm text-df justify-start">
+    <text wx:if="{{coupon.expireTime > '2099-01-01'}}">活动结束时间未知</text>
+    <text wx:elif="{{coupon.expireTimestamp < coupon.currentTimestamp}}">活动已结束，下次记得早点来哦</text>
+    <block wx:else>
+      <text>活动倒计时：</text>
+      <view wx:if="{{msTime.show}}" class="countdown">
+        <block wx:if="{{msTime.day > 0}}"><text>{{msTime.day}}</text><i>天</i></block>
+        <text>{{msTime.hour}}</text><i>小时</i>
+        <text>{{msTime.minutes}}</text><i>分钟</i>
+        <text>{{msTime.seconds}}</text><i>秒</i>
+      </view>
+    </block>
+  </view>
+  <view wx:if="{{coupon.section1Content}}" class="content">
+    <view class="text-red text-bold text-xl margin-bottom-sm">{{coupon.section1Title}}</view>
+    <view class="margin-bottom">
+      <rich-text nodes="{{coupon.section1Content}}" data-section="1" bindtap="setClipboardData"></rich-text>
+    </view>
+  </view>
+  <view wx:if="{{coupon.section2Content}}" class="content">
+    <view class="text-red text-bold text-xl margin-bottom-sm">{{coupon.section2Title}}</view>
+    <view class="margin-bottom">
+      <rich-text nodes="{{coupon.section2Content}}" data-section="2" bindtap="setClipboardData"></rich-text>
+    </view>
+  </view>
+  <view wx:if="{{coupon.section3Content}}" class="content">
+    <view class="text-red text-bold text-xl margin-bottom-sm">{{coupon.section3Title}}</view>
+    <view class="margin-bottom">
+      <rich-text nodes="{{coupon.section3Content}}" data-section="3" bindtap="setClipboardData"></rich-text>
+    </view>
+  </view>
+</view>

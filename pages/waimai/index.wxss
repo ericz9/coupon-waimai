@@ -1,0 +1,71 @@
+page {
+  background-color: #1e81ff;
+}
+
+.radius {
+  border-radius: 20rpx;
+}
+
+.recommend-coupon {
+  position: relative;
+}
+
+.acquire-coupon {
+  position: absolute;
+  left: 25px;
+  width: 88%;
+  height: 54px;
+  background: transparent;
+}
+
+.acquire-coupon:after {
+  border: 0;
+}
+
+.acquire-coupon.ele {
+  bottom: 17px;
+}
+
+.acquire-coupon.mt {
+  bottom: 14px;
+}
+
+.coupon.mt .content .title {
+  color: #b23926;
+}
+
+.coupon.mt .content .bottom .money-area {
+  color: #b23926;
+}
+
+.coupon.mt .content .bottom .tips {
+  background-color: #ffce77;
+  color: #b23926;
+}
+
+.coupon.ele .content .bottom .tips {
+  background-color: #4399ff;
+  color: #fff;
+}
+
+.coupon.mt .op .cu-btn {
+  background-image: linear-gradient(#ffe49d, #ffad3f);
+  color: #b23926;
+}
+
+.coupon.ele .content .title {
+  color: #2076cd;
+}
+
+.coupon.ele .content .bottom .money-area {
+  color: #2076cd;
+}
+
+.coupon.ele .op .cu-btn {
+  background-image: linear-gradient(#6aaeff, #2188ff);
+  color: #fff;
+}
+
+.role {
+  padding-bottom: 58px;
+}

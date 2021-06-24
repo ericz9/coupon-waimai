@@ -1,10 +1,191 @@
 @import "colorui/main.wxss";
 @import "colorui/icon.wxss";
+@import "colorui/animation.wxss";
 
 page {
-  --primary: var(--orange)
+  --primary: #f85812;
+  --gradual: var(--gradualOrange);
+}
+
+.bg-primary {
+  background-color: var(--primary);
+  color: var(--white);
+}
+
+.bg-primary-gradual {
+  background-image: var(--gradual);
+  color: var(--white);
+}
+
+.text-primary {
+  color: var(--primary);
 }
 
 .navigation-title {
   font-weight: 900;
+  color: #000000;
+}
+
+.failed {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+}
+
+.failed .op {
+  text-align: center;
+}
+
+.failed .tips {
+  font-size: 14px;
+  color: #7d7e80;
+  margin: 0 50px 10px 50px;
+}
+
+.load-more-done {
+  display: flex;
+  align-items: center;
+  padding: 32rpx;
+  font-size: 28rpx;
+  line-height: 48rpx;
+  border-style: solid;
+  border-width: 0;
+}
+
+.load-more-done::before, .load-more-done::after {
+  display: block;
+  flex: 1;
+  box-sizing: border-box;
+  height: 2rpx;
+  border-color: inherit;
+  border-style: inherit;
+  border-width: 2rpx 0 0;
+  transform: scaleY(0.5);
+  content: ''
+}
+
+.load-more-done::before {
+  margin-right: 32rpx;
+}
+
+.load-more-done::after {
+  margin-left: 32rpx;
+}
+
+.coupons {
+  padding: 0 30rpx 0 30rpx;
+}
+
+.coupon {
+  background-color: #fff;
+  margin-bottom: 20rpx;
+  border-radius: 15rpx;
+  height: 150rpx;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-position: left top, left bottom;
+  background-size: 100rpx, 70rpx;
+  background-repeat: no-repeat, no-repeat;
+}
+
+.coupon .content {
+  padding-left: 100rpx;
+  color: #444;
+}
+
+.coupon .content .title {
+  font-size: 32rpx;
+  font-weight: 900;
+}
+
+.coupon .content .title .cuIcon-hotfill {
+  margin-left: 10rpx;
+  font-size: 48rpx;
+}
+
+.coupon .content .bottom {
+  margin-top: 15rpx;
+  display: flex;
+  align-items: center;
+}
+
+.coupon .content .bottom .money-area {
+  margin-right: 15rpx;
+  font-size: 32rpx;
+  color: var(--primary);
+}
+
+.coupon .content .bottom .money {
+  font-size: 48rpx;
+  font-weight: 900;
+  margin-right: 5rpx;
+}
+
+.coupon .content .bottom .tips {
+  background-color: #f8d5bc;
+  color: var(--primary);
+  padding: 5rpx 10rpx;
+  border-radius: 10rpx;
+}
+
+.coupon .op {
+  margin-right: 20rpx;
+}
+
+.coupon .op .cu-btn {
+  font-weight: 900;
+}
+
+.goods image {
+  width: 100%;
+  height: calc((100vw - 80rpx) / 2);
+}
+
+.goods .cu-list.menu-avatar>.cu-item .content>view:first-child {
+  font-size: 28rpx;
+}
+
+.goods .grid.col-2>view {
+  width: calc(50% - 20rpx);
+}
+
+.goods .cu-list.grid.no-border {
+  padding: 0;
+  background-color: inherit;
+  text-align: left;
+}
+
+.goods .cu-list.grid.no-border>.cu-item {
+  padding: 0;
+  margin: 10rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+}
+
+.goods .cu-list.grid.no-border>.cu-item image {
+  border-top-left-radius: 10rpx;
+  border-top-right-radius: 10rpx;
+}
+
+.goods .cu-list.grid>.cu-item .cu-capsule .cu-tag {
+  margin-left: 0;
+  left: 0%;
+}
+
+.goods .cu-list.grid>.cu-item .text-cut {
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  min-height: 40px;
+}
+
+.goods .load-more-done, .goods .cu-load.loading {
+  padding-bottom: 58px;
 }

@@ -1,3 +1,26 @@
 .cuIcon-weixin {
   font-size: 42rpx;
 }
+
+.cu-custom .cu-bar {
+  padding-right: 0;
+  justify-content: flex-start;
+}
+
+.cu-custom .cu-bar .search-form {
+  margin: 0 10rpx;
+}
+
+.cu-custom .cu-bar .action:last-child {
+  margin: 0;
+}
+
+.cu-custom .cu-bar .search-form input {
+  padding-right: 0;
+}
+
+.cu-custom .logo {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+}

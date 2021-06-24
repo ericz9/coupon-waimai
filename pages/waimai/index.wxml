@@ -1,0 +1,35 @@
+<image class="response" src="{{fileServerUrl}}/images/coupon/assets/waimai-ad.jpg" mode="widthFix" />
+<view class="margin-lr">
+  <image class="response radius" src="{{fileServerUrl}}/images/coupon/assets/waimai-step-tips.png" mode="widthFix" />
+</view>
+<view wx:if="{{recommendEleCoupon}}" class="recommend-coupon margin-lr margin-top-sm">
+  <image class="response radius" src="{{fileServerUrl}}/images/coupon/assets/waimai-ele.jpg" mode="widthFix" />
+  <button class="acquire-coupon ele" id="{{recommendEleCoupon.id}}" bindtap="onGetCoupon"></button>
+</view>
+<view wx:if="{{recommendMtCoupon}}" class="recommend-coupon margin-lr margin-tb-sm">
+  <image class="response radius" src="{{fileServerUrl}}/images/coupon/assets/waimai-mt.png" mode="widthFix" />
+  <button class="acquire-coupon mt" id="{{recommendMtCoupon.id}}" bindtap="onGetCoupon"></button>
+</view>
+<view class="coupons">
+  <view
+    class="coupon {{item.channel === 1 ? 'mt' : 'ele'}}"
+    wx:for="{{remainCoupons}}"
+    wx:key="index"
+    style="background-image: url({{fileServerUrl}}/images/public/assets/label-{{item.channel}}.png),url({{fileServerUrl}}/images/public/assets/mark-{{item.channel}}.png)">
+    <view class="content">
+      <view class="title">
+        <text>{{item.title}}</text>
+      </view>
+      <view class="bottom">
+        <view class="money-area">
+          <text class="money">{{item.money}}</text>元
+        </view>
+        <view class="tips">{{item.tips}}</view>
+      </view>
+    </view>
+    <view class="op">
+      <button class="cu-btn round" id="{{item.id}}" bindtap="onGetCoupon">免费领取</button>
+    </view>
+  </view>
+</view>
+<view class="role"></view>

@@ -1,0 +1,13 @@
+<template name="failed">
+  <view class="failed">
+    <view class="op">
+      <block wx:if="{{loadingRetry}}">
+        <view class="tips">正在尝试重新加载...</view>
+      </block>
+      <block wx:else>
+        <view class="tips">网络开小差了，刷新一下试试吧~</view>
+        <button class="cu-btn bg-primary-gradual" bindtap="reInitialize">重新加载</button>
+      </block>
+    </view>
+  </view>
+</template>

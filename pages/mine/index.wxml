@@ -1,0 +1,156 @@
+<view class="header bg-primary-gradual">
+  <cu-custom wx:if="{{canUseCustomBar}}">
+    <view class="navigation-title" slot="content">个人中心</view>
+  </cu-custom>
+  <view class="userinfo">
+    <image wx:if="{{user.headImg}}" class="avatar" src="{{user.headImg}}" />
+    <view class="info">
+      <block wx:if="{{user.login === 1}}">
+        <view class="flex justify-between align-center">
+          <view>
+            <view class="flex align-center" bindtap="onGotoInfo">
+              <text>{{user.nickName}}</text>
+              <text class="cuIcon-right"></text>
+            </view>
+            <view class="tips">欢迎回来，天天享优惠</view>
+          </view>
+          <button wx:if="{{!wallet.wxAccount}}" class="cu-btn round sm text-grey" bindtap="onGotoInfo">
+            <text class="cuIcon-weixin margin-right-xs text-green"></text>请设置微信号
+          </button>
+        </view>
+      </block>
+      <block wx:else>
+        <view class="flex align-center" bindtap="onClickLogin">
+          <text>立即登录</text>
+          <text class="cuIcon-right"></text>
+        </view>
+        <view class="tips">即刻享受更多优惠</view>
+      </block>
+    </view>
+  </view>
+</view>
+<view class="flex justify-center">
+  <view class="wallet bg-black">
+    <view class="summary">
+      <view class="balance">
+        <view class="label">可提现金额</view>
+        <view class="value">{{wallet.balance}}</view>
+      </view>
+      <button class="cu-btn round bg-primary-gradual" bindtap="onGotoDraw">去提现</button>
+    </view>
+    <view class="detail">
+      <view class="item">
+        <view class="label">待结算金额</view>
+        <view class="value">{{wallet.pendingMoney}}</view>
+      </view>
+      <view class="item">
+        <view class="label">提现中金额</view>
+        <view class="value">{{wallet.drawingMoney}}</view>
+      </view>
+      <view class="item">
+        <view class="label">累计收入金额</view>
+        <view class="value">{{wallet.totalMoney}}</view>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="recommend flex justify-center margin">
+  <button class="cu-btn round basis-xl bg-primary-gradual padding" bindtap="onShowOffiaccountDialog">{{mpFlowLinkText}}</button>
+</view>
+<view class="divider"></view>
+<view class="cu-list menu sm-border">
+  <view wx:if="{{inviter.name}}" class="cu-item arrow" bindtap="onCopyInviterWxAccount">
+    <view class="content">
+      <text class="cuIcon-profilefill text-cyan"></text>
+      <text class="text-black">我的推荐人</text>
+    </view>
+    <view class="action text-right">
+      <view class="text-grey text-sm">{{inviter.name}}</view>
+      <view class="text-orange text-xs">订单对推荐人隐藏用户信息，保护隐私</view>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap="generatePoster">
+    <view class="content">
+      <text class="cuIcon-picfill text-primary"></text>
+      <text class="text-black">我的推广海报</text>
+    </view>
+    <view class="action text-right">
+      <view class="text-orange text-sm">好友下单，你就有收入</view>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap="onGotoFriends">
+    <view class="content">
+      <text class="cuIcon-friendfill text-orange"></text>
+      <text class="text-black">我邀请的朋友</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap="onGotoFlows">
+    <view class="content">
+      <text class="cuIcon-moneybagfill text-red"></text>
+      <text class="text-black">我的资金流水</text>
+    </view>
+  </view>
+  <view wx:if="{{custom === '1'}}" class="cu-item arrow">
+    <button class="cu-btn content" open-type="contact">
+      <text class="cuIcon-commentfill text-green"></text>
+      <text class="text-black">联系客服</text>
+    </button>
+  </view>
+  <view wx:elif="{{customQrcodeUrl}}" class="cu-item arrow" bindtap="onShowCustomDialog">
+    <view class="content">
+      <text class="cuIcon-commentfill text-green"></text>
+      <text class="text-black">联系客服</text>
+    </view>
+  </view>
+  <view class="cu-item arrow" bindtap="onShowBusinessDialog">
+    <view class="content">
+      <text class="cuIcon-taoxiaopu text-primary"></text>
+      <text class="text-primary">我也要做返利小程序</text>
+    </view>
+  </view>
+</view>
+
+<canvas style="width:750px;height:1334px;position:fixed;top:9999px" canvas-id="poster" />
+<view class="cu-modal {{showShareImgDialog  ? 'show' : ''}}">
+  <view class="cu-dialog">
+    <image src="{{shareCanvasImgPath}}" mode="widthFix" show-menu-by-longpress="{{true}}" />
+    <view class="tips text-red">长按图片，发送给朋友或保存~</view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub solid-left" bindtap="onHideShareImgDialog">关闭</view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{showOffiaccountDialog  ? 'show' : ''}}">
+  <view class="cu-dialog">
+    <image src="{{offiaccountUrl}}" mode="aspectFit" show-menu-by-longpress="{{true}}" />
+    <view class="tips text-red">长按图片保存，再识别二维码关注公众号~</view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub solid-left" bindtap="onHideOffiaccountDialog">关闭</view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{showCustomDialog  ? 'show' : ''}}">
+  <view class="cu-dialog">
+    <image src="{{customQrcodeUrl}}" mode="aspectFit" show-menu-by-longpress="{{true}}" />
+    <view class="tips text-red">长按图片保存，添加客服微信~</view>
+    <view class="cu-bar bg-white">
+      <view class="action margin-0 flex-sub solid-left" bindtap="onHideCustomDialog">关闭</view>
+    </view>
+  </view>
+</view>
+<view class="cu-modal {{showBusinessDialog  ? 'show' : ''}}">
+  <view class="cu-dialog">
+    <view class="cu-bar bg-white justify-end">
+      <view class="content">我也要做返利小程序</view>
+      <view class="action" bindtap="onHideBusinessDialog">
+        <text class="cuIcon-close text-grey"></text>
+      </view>
+    </view>
+    <view class="padding-xl">
+      添加微信时，请备注{{'<'}}返利小程序>哦~
+    </view>
+    <view class="cu-bar bg-primary">
+      <view class="action margin-0 flex-sub solid-left" bindtap="onClickClipboardWx">复制微信号</view>
+    </view>
+  </view>
+</view>

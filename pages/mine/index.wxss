@@ -1,0 +1,101 @@
+page {
+  background-color: #fff;
+}
+
+.header {
+  color: #fff;
+  height: 350rpx;
+  border-bottom-left-radius: 90% 15%;
+  border-bottom-right-radius: 90% 15%;
+}
+
+.header .navigation-title {
+  color: #fff;
+}
+
+.header .userinfo {
+  width: calc(100vw - 40rpx);
+  margin: 0 20rpx;
+  display: flex;
+  align-items: center;
+}
+
+.header .userinfo .avatar {
+  width: 100rpx;
+  height: 100rpx;
+  margin-right: 20rpx;
+  border-radius: 10rpx;
+}
+
+.header .userinfo .info {
+  flex: 1;
+}
+
+.header .userinfo .info .tips {
+  margin-top: 15rpx;
+  font-size: 24rpx;
+}
+
+.header .userinfo .info .cuIcon-right {
+  font-size: 20rpx;
+}
+
+.wallet {
+  width: calc(100vw - 40rpx);
+  border-radius: 20rpx;
+  margin-top: -100rpx;
+  padding: 20rpx;
+  color: #E3DABB;
+}
+
+.wallet .summary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wallet .detail {
+  display: flex;
+  margin-top: 40rpx;
+}
+
+.wallet .detail .item {
+  flex: 1;
+}
+
+.wallet .value {
+  font-size: 40rpx;
+  font-weight: 600;
+}
+
+.recommend .cu-btn {
+  height: 80rpx;
+  animation: shake 5s infinite linear;
+}
+
+.divider {
+  height: 20rpx;
+  background-color: #f1f1f1;
+}
+
+.cu-list.menu>.cu-item:last-child:after {
+  border-bottom: 1rpx solid #ddd;
+}
+
+.cu-list .cu-item .content {
+  font-weight: 500;
+}
+
+.cu-list .cu-item .content [class^='cuIcon-']  {
+  font-size: 30rpx;
+}
+
+.cu-modal .cu-dialog image {
+  width: 375rpx;
+  padding: 20rpx 0;
+}
+
+.cu-modal .cu-dialog .tips {
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+}

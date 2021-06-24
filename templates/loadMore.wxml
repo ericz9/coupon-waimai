@@ -1,0 +1,9 @@
+<template name="loadMore">
+  <view class="load-more text-grey">
+    <view wx:if="{{pager.loading === 'loading'}}" class="cu-load loading"></view>
+    <view wx:elif="{{pager.loading === 'fail'}}" class="cu-load erro" bindtap="loadMore"></view>
+    <block wx:else>
+      <view class="load-more-done" wx:if="{{!pager.hasMore}}">我是有底线的</view>
+    </block>
+  </view>
+</template>

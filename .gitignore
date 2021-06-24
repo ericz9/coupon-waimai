@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 miniprogram_npm
+project.config.json
 /dist
 
 # local env files

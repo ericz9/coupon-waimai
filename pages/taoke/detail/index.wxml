@@ -1,0 +1,100 @@
+<import src="/templates/failed.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:elif="{{loading === 'notfound'}}">
+  <view class="failed">
+    <view class="op">
+      <view class="tips">{{goods}}</view>
+    </view>
+  </view>
+</block>
+<block wx:else>
+  <view class="banner">
+    <swiper class="swiper" indicator-dots="true" circular="true" autoplay="true" interval="2000" duration="500">
+      <block wx:for="{{goods.images}}">
+        <swiper-item>
+          <image src="{{item}}" mode="aspectFit" class="img"></image>
+        </swiper-item>
+      </block>
+    </swiper>
+  </view>
+  <view class="margin">
+    <view class="goods-title margin-tb">
+      <view class="channel">
+        <image src="{{fileServerUrl}}/images/coupon/assets/goods-channel-{{goods.channel}}.png" mode="aspectFit"></image>
+      </view>
+      <text class="text-df text-black">{{goods.title}}</text>
+    </view>
+    <view wx:if="{{goods.slogan}}" class="text-sm text-grey margin-tb">{{goods.slogan}}</view>
+    <view class="flex justify-between align-center text-sm">
+      <view>
+        <text class="margin-right-xs text-red">券后</text>
+        <text class="margin-right-xs text-red">¥</text>
+        <text class="margin-right-sm text-bold text-xl text-red">{{goods.discountPrice}}</text>
+        <block wx:if="{{goods.originalPrice > goods.discountPrice}}">
+          <text class="margin-right-xs text-grey">¥</text>
+          <text class="text-grey" style="text-decoration:line-through">{{goods.originalPrice}}</text>
+        </block>
+      </view>
+      <view class="text-yellow">
+        <text class="text-xs">预计返 ¥ </text>
+        <text>{{goods.sharingMoney}}</text>
+      </view>
+      <view class="text-grey">销量：{{goods.monthSales}}</view>
+    </view>
+    <view wx:if="{{goods.couponMoney > 0}}" class="goods-coupon margin-tb flex justify-center">
+      <view class="content flex-twice dashed-right bg-yellow">
+        <view class="flex align-baseline text-df margin-bottom-xs">
+          <view class="margin-right-xs">¥</view>
+          <view class="margin-right-xs text-xxxl text-bold">{{goods.couponMoney}}</view>
+          <view>优惠券</view>
+        </view>
+        <view class="flex align-center">
+          <view class="text-sm margin-right-xs">有效期</view>
+          <view class="text-xs">
+            <view>{{goods.couponStartTime}}</view>
+            <view>{{goods.couponEndTime}}</view>
+          </view>
+        </view>
+      </view>
+      <view class="op flex-sub text-center padding bg-yellow">
+        <button class="cu-btn bg-primary round text-sm" bindtap="onGotoBuy">立即领取</button>
+      </view>
+    </view>
+    <view class="goods-describe">
+      <view class="cu-bar bg-white">
+        <view class="action">
+          <text class="cuIcon-titles text-black"></text>
+          <text class="text-df text-bold">图文详情</text>
+        </view>
+      </view>
+      <image wx:for="{{goods.images}}" src="{{item}}" mode="widthFix"></image>
+    </view>
+  </view>
+  <view class="goods-footer cu-bar bg-white tabbar border shop">
+    <view class="action text-black" bindtap="onGotoHome">
+      <view class="cuIcon-homefill"></view>
+      首页
+    </view>
+    <button class="action" open-type="share">
+      <view class="text-black">
+        <view class="cuIcon-share text-black"></view>
+      </view> 分享
+    </button>
+    <view class="btn-group">
+      <button class="cu-btn bg-yellow round shadow-blur" bindtap="createPosterJson">生成海报</button>
+      <button class="cu-btn bg-primary round shadow-blur" bindtap="onGotoBuy">立即购买</button>
+    </view>
+  </view>
+  <painter style="position:fixed;top:-9999rpx" widthPixels="750" palette="{{paletteJson}}" bind:imgOK="onGeneratePosterOK" bind:imgErr="onGeneratePosterError" />
+  <view class="cu-modal {{showShareImgDialog  ? 'show' : ''}}">
+    <view class="cu-dialog">
+      <image src="{{shareCanvasImgPath}}" mode="widthFix" show-menu-by-longpress="{{true}}" />
+      <view class="tips text-red">长按图片，发送给朋友或保存~</view>
+      <view class="cu-bar bg-white">
+        <view class="action margin-0 flex-sub solid-left" bindtap="onHideShareImgDialog">关闭</view>
+      </view>
+    </view>
+  </view>
+</block>

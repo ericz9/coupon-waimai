@@ -1,0 +1,87 @@
+<import src="/templates/failed.wxml" />
+<import src="/templates/goods.wxml" />
+<cu-custom
+  wx:if="{{canUseCustomBar}}"
+  bgColor="bg-primary-gradual"
+  isHomePage="{{true}}"
+  logoUrl="{{logoUrl}}"
+  bindsearchevent="onClickSearch">
+</cu-custom>
+
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:elif="{{loading === 'success'}}">
+  <view class="addtips" style="{{canUseCustomBar ? 'top:' + customBarHeight + 'px' : ''}}" wx:if="{{showAddTips}}">
+    <view class="arrow"></view>
+    <view class="content">
+      <view>添加到 “我的小程序”，每日点餐前微信首页下拉即可领取</view>
+      <view class="divider"></view>
+      <view class="cuIcon-roundclosefill" bindtap="onClickCloseAddTips"></view>
+    </view>
+  </view>
+  <view class="margin-bottom">
+    <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+      <swiper-item wx:for="{{banners}}" wx:key="index">
+        <image src="{{item.imageUrl}}" mode="aspectFill"></image>
+      </swiper-item>
+    </swiper>
+  </view>
+  <view class="coupons">
+    <view
+      class="coupon"
+      wx:for="{{coupons}}"
+      wx:key="index"
+      style="background-image: url({{fileServerUrl}}/images/public/assets/label-{{item.channel}}.png),url({{fileServerUrl}}/images/public/assets/mark-{{item.channel}}.png)">
+      <view class="content">
+        <view class="title">
+          <text>{{item.title}}</text>
+        </view>
+        <view class="bottom">
+          <view class="money-area">
+            <text class="money">{{item.money}}</text>元
+          </view>
+          <view class="tips">{{item.tips}}</view>
+        </view>
+      </view>
+      <view class="op">
+        <button class="cu-btn bg-primary-gradual round" bindtap="onGetCoupon">免费领取</button>
+      </view>
+    </view>
+  </view>
+  <block wx:if="{{infos.length > 0}}">
+    <view class="flex justify-between align-center padding-lr padding-top-sm">
+      <view class="text-xl text-bold">精选活动</view>
+      <view class="flex align-center text-grey" bindtap="onGotoInfoList">
+        <text class="text-sm">更多</text>
+        <text class="cuIcon-right"></text>
+      </view>
+    </view>
+    <view class="cu-list menu-avatar margin-top-xs margin-bottom-sm margin-lr" style="border-radius: 10rpx;">
+      <view
+        wx:for="{{infos}}"
+        wx:key="index"
+        class="cu-item"
+        style="height: 125rpx;"
+        id="{{item.id}}"
+        bindtap="onGotoInfoDetail">
+        <view class="cu-avatar radius lg" style="background-image:url({{item.imageUrl}});"></view>
+        <view class="content">
+          <view><view class="text-cut">{{item.title}}</view></view>
+          <view class="text-gray text-sm flex"><view class="text-cut">{{item.subTitle}}</view></view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">{{item.createTime}}</view>
+          <view wx:if="{{item.expireTimestamp < item.currentTimestamp}}" class="cu-tag round bg-grey sm">已结束</view>
+        </view>
+      </view>
+    </view>
+  </block>
+  <view class="text-xl text-bold padding-lr padding-top-sm">热销商品</view>
+  <template is="goods" data="{{...{goods: goods, pager: pager} }}" />
+  <view class="share">
+    <button class="cu-btn icon lg" open-type="share">
+      <text class="cuIcon-weixin text-green"></text>
+    </button>
+  </view>
+</block>

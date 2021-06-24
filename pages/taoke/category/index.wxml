@@ -1,0 +1,13 @@
+<import src="/templates/failed.wxml" />
+<import src="/templates/goods.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:elif="{{loading === 'success'}}">
+  <view class="nav bg-white flex justify-center margin-top-sm">
+    <view class="cu-item {{sort === 'default' ? 'text-primary cur' : ''}}" id="default" bindtap="handleTabClick">综合</view>
+    <view class="cu-item {{sort === 'sale' ? 'text-primary cur' : ''}}" id="sale" bindtap="handleTabClick">销量</view>
+    <view class="cu-item {{sort === 'price' ? 'text-primary cur' : ''}}" id="price" bindtap="handleTabClick">价格</view>
+  </view>
+  <template is="goods" data="{{...{goods: goods, pager: pager} }}" />
+</block>

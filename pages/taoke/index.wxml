@@ -1,0 +1,46 @@
+<import src="/templates/failed.wxml" />
+<import src="/templates/goods.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <cu-custom wx:if="{{canUseCustomBar}}" isSearch="{{true}}"></cu-custom>
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:elif="{{loading === 'success'}}">
+  <view class="header {{currentCategoryId !== '100' || isPageScrolled ? 'bg-primary-gradual' : ''}}">
+    <cu-custom wx:if="{{canUseCustomBar}}" isSearchGuide="{{true}}" bindsearchevent="onClickSearch"></cu-custom>
+    <scroll-view scroll-x class="nav">
+      <view
+        wx:for="{{categories}}"
+        wx:key="index"
+        class="cu-item {{item.value === currentCategoryId ? 'text-white cur' : ''}}"
+        id="{{item.value}}"
+        bindtap="handleTabClick">
+        {{item.name}}
+      </view>
+    </scroll-view>
+  </view>
+  <block wx:if="{{currentCategoryId === '100'}}">
+    <view class="banner">
+      <view class="placeholder bg-primary-gradual"></view>
+      <swiper class="screen-swiper square-dot" indicator-dots="true" circular="true" autoplay="true" interval="5000" duration="500">
+        <swiper-item wx:for="{{banners}}" wx:key="index">
+          <image src="{{item.imageUrl}}" mode="aspectFill"></image>
+        </swiper-item>
+      </swiper>
+    </view>
+    <view class="goods-nav cu-list grid col-5 no-border">
+      <view
+        wx:for="{{navs}}"
+        wx:key="index"
+        class="cu-item flex flex-direction align-center"
+        id="{{item.id}}"
+        bindtap="onGotoNav">
+        <image src="{{item.value}}" mode="aspectFill"></image>
+        <text class="text-sm">{{item.name}}</text>
+      </view>
+    </view>
+    <template is="goods" data="{{...{goods: goods, pager: pager} }}" />
+  </block>
+  <view wx:else class="goods-category">
+    <template is="goods" data="{{...{goods: goods, pager: pager} }}" />
+  </view>
+</block>

@@ -10,9 +10,40 @@
       </button>
       <slot name="share"></slot>
     </view>
-    <view class="action border-custom"  wx:if="{{isCustom}}" style="width:{{custom.width}}px;height:{{custom.height}}px;margin-left:calc(750rpx - {{custom.right}}px)">
+    <view class="action border-custom" wx:if="{{isCustom}}" style="width:{{custom.width}}px;height:{{custom.height}}px;margin-left:calc(750rpx - {{custom.right}}px)">
       <text class="cuIcon-back" bindtap="BackPage"></text>
       <text class="cuIcon-homefill" bindtap="toHome"></text>
+    </view>
+    <view wx:if="{{isHomePage || isSearchGuide}}" class="flex align-center margin-left-sm" style="top:{{statusBar}}px">
+      <image wx:if="{{isHomePage}}" src="{{logoUrl}}" mode="aspectFit" class="logo margin-right-xs"></image>
+      <view class="cu-bar search">
+        <view class="search-form round" bindtap="handleSearchEvent">
+          <text class="cuIcon-search"></text>
+          <input type="text" placeholder="粘贴口令或链接可返利" disabled></input>
+        </view>
+      </view>
+    </view>
+    <view style="top:{{statusBar}}px" wx:if="{{isSearch}}">
+      <view class="cu-bar search">
+        <view class="search-form round">
+          <text class="cuIcon-search"></text>
+          <input
+            type="text"
+            value="{{searchText}}"
+            placeholder="搜索你想要的商品"
+            bindinput="onSearchTextInput"
+            bindconfirm="handleSearchEvent">
+          </input>
+          <text
+            class="cuIcon-roundclosefill text-gray"
+            style="visibility:{{searchText.length > 0 ? 'visible' : 'hidden'}}"
+            bindtap="handleRemoveSearchTextEvent">
+          </text>
+        </view>
+        <view class="action">
+          <view bindtap="handleSearchEvent">搜索</view>
+        </view>
+      </view>
     </view>
     <view class="content" style="top:{{statusBar}}px">
       <slot name="content"></slot>

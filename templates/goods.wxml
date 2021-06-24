@@ -1,0 +1,38 @@
+<import src="loadMore.wxml"/>
+<template name="goods">
+  <view class="goods">
+    <view class="cu-list grid col-2 no-border margin-top-xs margin-lr-sm">
+      <view
+        wx:for="{{goods}}"
+        wx:key="index"
+        class="cu-item"
+        id="{{item.id}}"
+        data-channel="{{item.channel}}"
+        bindtap="onGotoGoodsDetail">
+        <image src="{{item.imageUrl}}" mode="aspectFit"></image>
+        <view class="padding-lr-xs">
+          <view class="text-cut margin-bottom-xs">{{item.title}}</view>
+          <view class="flex justify-between align-center">
+            <view wx:if="{{item.couponMoney}}" class="cu-capsule radius">
+              <view class="cu-tag bg-primary-gradual">券</view>
+              <view class="cu-tag line-red">{{item.couponMoney}}</view>
+            </view>
+            <view wx:else class="cu-tag bg-gray radius">暂无优惠券</view>
+            <view class="text-sm text-grey">月售{{item.monthSales}}</view>
+          </view>
+          <view class="flex text-primary text-sm">
+            <text class="margin-right-xs">券后</text>
+            <text class="margin-right-xs">¥</text>
+            <text class="margin-right-xs text-bold text-lg">{{item.discountPrice}}</text>
+            <view wx:if="{{item.originalPrice > item.discountPrice}}" class="flex text-grey">
+              <text class="margin-right-xs">¥</text>
+              <text style="text-decoration:line-through">{{item.originalPrice}}</text>
+            </view>
+          </view>
+          <view wx:if="{{item.sharingMoney > 0}}" class="cu-tag bg-primary-gradual radius margin-tb-xs" style="width:100%;height:40rpx;">预计返 ¥ {{item.sharingMoney}}</view>
+        </view>
+      </view>
+    </view>
+    <template is="loadMore" data="{{...{pager: pager} }}"/>
+  </view>
+</template>

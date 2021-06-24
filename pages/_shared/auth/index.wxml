@@ -1,0 +1,17 @@
+<view class="main">
+  <view class="logo">
+    <image mode="aspectFit" src="{{logoUrl}}"></image>
+  </view>
+  <view class="auth">
+    <view wx:if="{{canIUse}}" class="op">
+      <view class="tips">请完成微信授权以继续使用</view>
+      <button wx:if="{{canIUseGetUserProfile}}" class="cu-btn block lg bg-green" bindtap="bindGetUserProfile">
+        <text class="text-white">微信授权登录</text>
+      </button>
+      <button wx:else class="cu-btn block lg bg-green" open-type="getUserInfo" bind:getuserinfo="bindGetUserInfo">
+        <text class="text-white">微信授权登录</text>
+      </button>
+    </view>
+    <view wx:else class="upgrade">请升级微信版本</view>
+  </view>
+</view>

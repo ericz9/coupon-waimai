@@ -1,0 +1,57 @@
+<import src="/templates/failed.wxml" />
+<import src="/templates/loadMore.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:else>
+  <view wx:if="{{flows.length > 0}}" class="flows">
+    <view wx:if="{{settleNotice.length > 0}}" class="text-sm bg-primary padding-xs">{{settleNotice}}</view>
+    <view
+      wx:for="{{flows}}"
+      wx:key="index"
+      class="padding bg-white solids-bottom">
+      <view class="flex align-center">
+        <image src="{{item.orderImage}}" mode="aspectFit" />
+        <view class="flex-sub margin-left-lg">
+          <block wx:if="{{item.type === 1}}">
+            <view class="margin-bottom-sm">{{item.orderTitle}}</view>
+            <view wx:if="{{item.status === 1}}" class="cu-tag round bg-green">已结算</view>
+            <view wx:elif="{{item.status === 2}}" class="cu-tag round bg-orange">待结算</view>
+            <view wx:elif="{{item.status === 0}}" class="cu-tag round bg-grey">已失效</view>
+            <view class="flex">
+              <view class="margin-right-xl">
+                <view class="margin-top-sm margin-bottom-xs text-grey">结算金额</view>
+                <view class="text-black text-bold">{{item.orderMoney}}</view>
+              </view>
+              <view class="margin-right-xl">
+                <view class="margin-top-sm margin-bottom-xs text-grey">我的佣金</view>
+                <view class="text-black text-bold">{{item.money}}</view>
+              </view>
+              <view class="margin-right-xl">
+                <view class="margin-top-sm margin-bottom-xs text-grey">订单类型</view>
+                <view class="text-black text-bold">{{item.recommendType === 0 ? '自购订单' : item.recommendType === 1 ? '一级订单' : item.recommendType === 2 ? '二级订单' : ''}}</view>
+              </view>
+            </view>
+            <view class="text-grey text-sm margin-top-sm">创建时间：{{item.createTime}}</view>
+            <view wx:if="{{item.status === 1}}" class="text-grey text-sm margin-top-xs">结算时间：{{item.finishTime}}</view>
+          </block>
+          <block wx:else>
+            <view class="margin-bottom-sm">申请提现{{item.money}}元</view>
+            <view wx:if="{{item.status === 1}}" class="cu-tag round bg-red margin-bottom-sm">提现成功</view>
+            <view wx:elif="{{item.status === 10}}" class="cu-tag round bg-orange margin-bottom-sm">提现中</view>
+            <view wx:elif="{{item.status === 11}}" class="cu-tag round bg-grey margin-bottom-sm">提现失败</view>
+            <view class="text-red text-sm margin-bottom-sm">{{item.describe}}</view>
+            <view class="text-grey text-sm">申请时间：{{item.createTime}}</view>
+            <view wx:if="{{item.status === 1 || item.status === 11}}" class="text-grey text-sm margin-top-xs">审核时间：{{item.finishTime}}</view>
+          </block>
+        </view>
+      </view>
+    </view>
+    <template is="loadMore" data="{{...{pager: pager} }}"/>
+  </view>
+  <view wx:else class="failed">
+    <view class="op">
+      <view class="tips">您还没有资金流水哦~</view>
+    </view>
+  </view>
+</block>

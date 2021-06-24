@@ -23,7 +23,23 @@ Component({
       type: [Boolean, String],
       default: false
     },
+    isHomePage: {
+      type: [Boolean, String],
+      default: false
+    },
+    logoUrl: {
+      type: [Boolean, String],
+      default: false
+    },
     isShare: {
+      type: [Boolean, String],
+      default: false
+    },
+    isSearchGuide: {
+      type: [Boolean, String],
+      default: false
+    },
+    isSearch: {
       type: [Boolean, String],
       default: false
     },
@@ -38,7 +54,8 @@ Component({
   data: {
     statusBar: app.globalData.statusBar,
     customBar: app.globalData.customBar,
-    custom: app.globalData.custom
+    custom: app.globalData.custom,
+    searchText: ''
   },
   /**
    * 组件的方法列表
@@ -47,20 +64,27 @@ Component({
     BackPage() {
       wx.navigateBack({
         delta: 1
-      });
+      })
     },
     toHome(){
       wx.reLaunch({
-        url: '/pages/index/index',
+        url: '/pages/home/index',
       })
     },
-    // 监听分享事件
-    onShareAppMessage(res) {
-      return {
-        title: app.globalData.share.shareTitle,
-        path: app.globalData.share.shareUrl,
-        imageUrl: app.globalData.share.shareImageUrl
-      }
+    // 搜索内容输入
+    onSearchTextInput(evt) {
+      this.setData({
+        searchText: evt.detail.value
+      })
+    },
+    handleSearchEvent(){
+      this.triggerEvent('searchevent', this.data.searchText)
+    },
+    handleRemoveSearchTextEvent(){
+      this.setData({
+        searchText: ''
+      })
+      this.triggerEvent('searchremoveevent')
     }
   }
 })

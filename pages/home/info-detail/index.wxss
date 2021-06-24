@@ -1,0 +1,25 @@
+.container {
+  background-color: #fff;
+  min-height: 100vh;
+  padding: 20rpx 40rpx;
+}
+
+.container .countdown text {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.container .countdown i {
+  font-style: normal;
+  margin: 0 5px;
+}
+
+.container .content {
+  width: 100%;
+  user-select: auto;
+  -webkit-user-select: auto;
+}
+
+.container .content a {
+  color: #f37b1d;
+}

@@ -1,0 +1,38 @@
+<import src="/templates/failed.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:else>
+  <view class="draw margin">
+    <view class="flex align-center padding">
+      <view class="text-bold text-df">到账支付宝</view>
+      <view class="margin-left-lg text-sm text-orange">
+        <view wx:if="{{wallet.aliAccount}}">{{wallet.aliAccount}}</view>
+        <view wx:else class="flex align-center" bindtap="onGotoInfo">
+          <text>通过支付宝向您付款，立即前往设置</text>
+          <text class="cuIcon-right"></text>
+        </view>
+      </view>
+    </view>
+    <view class="body bg-white padding">
+      <view class="text-black text-bold text-lg">提现金额</view>
+      <view class="cu-form-group margin-top">
+        <text class="text-price text-black text-bold text-xl margin-right-sm"></text>
+        <input placeholder="请输入提现金额" type="number" value="{{needDrawMoney}}" bindinput="onInputMoney"></input>
+      </view>
+      <view class="text-gray text-sm margin-top-sm">可提现余额 <text class="text-price">{{wallet.balance}}</text></view>
+      <button
+        class="cu-btn block round lg bg-primary-gradual margin-top"
+        loading="{{submiting}}"
+        disabled="{{!wallet.aliAccount || wallet.balance <= 0 || !needDrawMoney}}"
+        bindtap="onSubmit">
+        <text class="text-white">申请提现</text>
+      </button>
+    </view>
+  </view>
+  <view class="rule bg-white padding margin">
+    <view class="text-black text-bold text-lg">提现规则</view>
+    <view class="text-gray text-sm margin-top-sm">1. 只能提整数部分，小数部分可累计到下次提现</view>
+    <view class="text-gray text-sm margin-top-sm">2. 满 <text class="text-price">{{sysInfo.minDrawMoney}}元可提现</text></view>
+  </view>
+</block>

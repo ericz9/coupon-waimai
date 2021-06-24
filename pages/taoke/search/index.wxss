@@ -1,0 +1,33 @@
+.header {
+  color: #fff;
+  height: 115px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 99;
+}
+
+.container {
+  padding-top: 115px;
+}
+
+.container .cu-tag+.cu-tag {
+  margin-left: 0;
+}
+
+.container .cu-tag.kw {
+  padding: 8rpx 16rpx;
+  max-width: 100%;
+  justify-content: flex-start;
+  height: auto;
+  border-radius: 10rpx;
+}
+
+.container .cu-tag.kw text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  word-wrap: break-word;
+  white-space: normal !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}

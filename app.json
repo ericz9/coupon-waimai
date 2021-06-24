@@ -1,17 +1,63 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/home/index",
+    "pages/home/info/index",
+    "pages/home/info-detail/index",
+    "pages/waimai/index",
+    "pages/taoke/index",
+    "pages/taoke/search/index",
+    "pages/taoke/category/index",
+    "pages/taoke/detail/index",
+    "pages/mine/index",
+    "pages/mine/flows/index",
+    "pages/mine/info/index",
+    "pages/mine/friends/index",
+    "pages/mine/draw/index",
+    "pages/_shared/auth/index",
+    "pages/_shared/auth-taobao/index",
+    "pages/webview/index"
   ],
   "window": {
-    "navigationStyle": "custom",
+    "navigationStyle": "default",
     "navigationBarTextStyle": "black",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "外卖好券天天领",
+    "navigationBarTitleText": "天天领外卖红包",
     "backgroundColor": "#fff"
   },
-  "usingComponents": {
-    "cu-custom": "/colorui/components/cu-custom"
+  "tabBar": {
+    "custom": true,
+    "color": "#999999",
+    "selectedColor": "#333333",
+    "backgroundColor": "#fbfbfb",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/index",
+        "iconPath": "/assets/images/tabbar-home.png",
+        "selectedIconPath": "/assets/images/tabbar-home-active.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/waimai/index",
+        "iconPath": "/assets/images/tabbar-waimai.png",
+        "selectedIconPath": "/assets/images/tabbar-waimai-active.png",
+        "text": "外卖"
+      },
+      {
+        "pagePath": "pages/taoke/index",
+        "iconPath": "/assets/images/tabbar-taoke.png",
+        "selectedIconPath": "/assets/images/tabbar-taoke-active.png",
+        "text": "购物"
+      },
+      {
+        "pagePath": "pages/mine/index",
+        "iconPath": "/assets/images/mine.png",
+        "selectedIconPath": "/assets/images/mine.png",
+        "text": "我的"
+      }
+    ]
   },
+  "usingComponents": {},
   "sitemapLocation": "sitemap.json"
 }

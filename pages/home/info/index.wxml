@@ -1,0 +1,43 @@
+<import src="/templates/failed.wxml" />
+<import src="/templates/loadMore.wxml" />
+<block wx:if="{{loading === 'fail'}}">
+  <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
+</block>
+<block wx:elif="{{loading === 'success'}}">
+  <scroll-view scroll-x class="bg-white nav">
+    <view
+      wx:for="{{categories}}"
+      wx:key="index"
+      class="cu-item {{item.id === queryParams.categoryId ? 'text-primary cur' : ''}}"
+      id="{{item.id}}"
+      bindtap="handleTabClick">
+      {{item.name}}
+    </view>
+  </scroll-view>
+  <block wx:if="{{coupons.length > 0}}">
+    <view class="cu-list menu-avatar">
+      <view
+        wx:for="{{coupons}}"
+        wx:key="index"
+        class="cu-item"
+        id="{{item.id}}"
+        bindtap="onGotoDetail">
+        <view class="cu-avatar radius lg" style="background-image:url({{item.imageUrl}});"></view>
+        <view class="content">
+          <view><view class="text-cut">{{item.title}}</view></view>
+          <view class="text-gray text-sm flex"><view class="text-cut">{{item.subTitle}}</view></view>
+        </view>
+        <view class="action">
+          <view class="text-grey text-xs">{{item.createTime}}</view>
+          <view wx:if="{{item.expireTimestamp < item.currentTimestamp}}" class="cu-tag round bg-grey sm">已结束</view>
+        </view>
+      </view>
+    </view>
+    <template is="loadMore" data="{{...{pager: pager} }}"/>
+  </block>
+  <view wx:else class="failed">
+    <view class="op">
+      <view class="tips">哎呀，还没有发布优惠活动~</view>
+    </view>
+  </view>
+</block>

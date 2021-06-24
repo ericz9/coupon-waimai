@@ -578,23 +578,23 @@ radio.white[checked] .wx-radio-input {
 }
 
 .solids::after {
-	border: 8rpx solid #eee;
+	border: 2rpx solid #ddd;
 }
 
 .solids-top::after {
-	border-top: 8rpx solid #eee;
+	border-top: 2rpx solid #ddd;
 }
 
 .solids-right::after {
-	border-right: 8rpx solid #eee;
+	border-right: 2rpx solid #ddd;
 }
 
 .solids-bottom::after {
-	border-bottom: 8rpx solid #eee;
+	border-bottom: 2rpx solid #ddd;
 }
 
 .solids-left::after {
-	border-left: 8rpx solid #eee;
+	border-left: 2rpx solid #ddd;
 }
 
 /* -- 虚线 -- */
@@ -1089,15 +1089,15 @@ button.icon.lg {
 }
 
 .cu-load.over::after {
-	content: "没有更多了";
+	content: "我是有底线的";
 }
 
 .cu-load.erro::before {
-	content: "\e658";
+	content: "\e6a4";
 }
 
 .cu-load.erro::after {
-	content: "加载失败";
+	content: "点击重新加载";
 }
 
 .cu-load.load-icon::before {
@@ -1349,7 +1349,7 @@ button.icon.lg {
 	border: none
 }
 
-.cu-list.menu>.cu-item:after {
+.cu-list.menu-avatar>.cu-item:after, .cu-list.menu>.cu-item:after {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -1482,8 +1482,6 @@ button.icon.lg {
 .cu-list.grid>.cu-item text {
 	display: block;
 	margin-top: 10rpx;
-	color: #888;
-	font-size: 26rpx;
 	line-height: 40rpx
 }
 
@@ -1496,9 +1494,9 @@ button.icon.lg {
 }
 
 .cu-list.grid>.cu-item .cu-tag {
-	right: auto;
+	/* right: auto;
 	left: 50%;
-	margin-left: 20rpx
+	margin-left: 20rpx */
 }
 
 .cu-list.grid {
@@ -1920,7 +1918,6 @@ button.icon.lg {
 .cu-custom .cu-bar .content {
 	width: calc(100% - 440rpx);
 }
-
 
 .cu-custom .cu-bar .content image {
 	height: 60rpx;
@@ -2876,6 +2873,10 @@ scroll-view.cu-steps .cu-item {
 	align-items: stretch;
 }
 
+.align-baseline {
+	align-items: baseline;
+}
+
 .self-start {
 	align-self: flex-start;
 }
@@ -3796,6 +3797,10 @@ scroll-view.cu-steps .cu-item {
 
 .text-xxl {
 	font-size: 44rpx;
+}
+
+.text-xxxl {
+	font-size: 52rpx;
 }
 
 .text-sl {
