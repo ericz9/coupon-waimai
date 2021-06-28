@@ -13,6 +13,8 @@ Component({
     loading: 'init',
     loadingRetry: false, // 加载失败后，尝试重试获取数据时为TRUE
     canUseCustomBar: false, // 自定义导航栏是否可用
+    customBarHeight: 0, // 自定义导航栏高度
+    openPublish: false, // 小程序是否处于发布审核阶段
     kw: '', //搜索关键词
     currentChannel: '', // 当前商品渠道
     historyKws: [], //历史搜索关键词
@@ -96,6 +98,8 @@ Component({
 
           this.setData({
             canUseCustomBar: app.globalData.canUseCustomBar,
+            customBarHeight: app.globalData.customBar,
+            openPublish: app.globalData.whoami.sysInfo.openPublish === '1',
             channels: d,
             currentChannel: d[0].value,
             historyKws: historyKws
@@ -281,6 +285,8 @@ Component({
           queryBy: 2,
           channel: this.data.currentChannel,
           keywords: this.data.kw
+        }, {
+          showToast: true
         }).then((d) => {
           d.data.forEach((item) => {
             // 预估返佣

@@ -1,6 +1,6 @@
 <import src="/templates/failed.wxml" />
 <import src="/templates/goods.wxml" />
-<view class="header bg-primary-gradual">
+<view class="header bg-primary-gradual {{openPublish ? 'open-publish' : ''}}">
   <cu-custom
     wx:if="{{canUseCustomBar}}"
     id="header"
@@ -9,7 +9,7 @@
     bindsearchevent="handleSearchEvent"
     bindsearchremoveevent="onClearKw">
   </cu-custom>
-  <view class="nav flex justify-center">
+  <view wx:if="{{!openPublish}}" class="nav flex justify-center">
     <view
       wx:for="{{channels}}"
       wx:key="index"
@@ -23,7 +23,7 @@
 <block wx:if="{{loading === 'fail'}}">
   <template is="failed" data="{{...{loadingRetry: loadingRetry} }}" />
 </block>
-<view wx:else class="container">
+<view wx:else class="container" style="{{canUseCustomBar ? (openPublish ? 'padding-top:' + customBarHeight + 'px' : '') : ''}}">
   <block wx:if="{{loading === 'init'}}">
     <view class="margin" wx:if="{{historyKws.length > 0}}">
       <view class="flex justify-between dashed-bottom padding-bottom-xs">

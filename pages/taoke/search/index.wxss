@@ -7,6 +7,10 @@
   z-index: 99;
 }
 
+.header.open-publish {
+  height: auto;
+}
+
 .container {
   padding-top: 115px;
 }
